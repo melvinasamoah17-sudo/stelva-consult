@@ -1078,3 +1078,18 @@ a.footer-contact-item:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* About Page Paragraph Hover Effect */
+.page-header p,
+.about-hero p,
+.hero-content p {
+    opacity: 0.35;
+    transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+.page-header p:hover,
+.about-hero p:hover,
+.hero-content p:hover {
+    opacity: 1;
+    color: #fff;
+}
