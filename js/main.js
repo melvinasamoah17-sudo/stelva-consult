@@ -1,5 +1,5 @@
 /* =============================================
-   STELVA CONSULT — Main JavaScript
+   STELVA LUTHNAEL CONSULT — Main JavaScript
    ============================================= */
 
 /* ---- EmailJS / WhatsApp notification config ---- */
