@@ -52,6 +52,12 @@ h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; }
 h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; }
 h3 { font-size: 1.2rem; font-weight: 600; }
 p  { font-size: 1rem; color: #3D4F62; }
+.page-header:hover p,
+.about-hero:hover p,
+.hero-content:hover p {
+    opacity: 1;
+    color: #fff;
+}
 
 .section-label {
   display: inline-block;
