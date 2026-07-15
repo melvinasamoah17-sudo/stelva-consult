@@ -75,8 +75,22 @@ section { padding: 90px 0; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-/* Center a lone card left over in the final row (e.g. 3 items where the 3rd sits alone) */
+/* Center a lone card left over in the final row of a 3-column grid */
 .grid-3 > :last-child:nth-child(3n+1) { grid-column: 2; }
+
+/* Center a lone card left over in the final row of the 2-column leadership grid
+   (e.g. Steven + David on row 1, Stephen alone on row 2) */
+.leaders-grid > :last-child:nth-child(2n+1) {
+  grid-column: 1 / -1;
+  width: 50%;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  /* On mobile the grid usually collapses to 1 column anyway — undo the constraint */
+  .leaders-grid > :last-child:nth-child(2n+1) {
+    width: 100%;
+  }
+}
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
 /* --- Buttons --- */
