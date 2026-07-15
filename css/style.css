@@ -75,6 +75,8 @@ section { padding: 90px 0; }
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+/* Center a lone card left over in the final row (e.g. 3 items where the 3rd sits alone) */
+.grid-3 > :last-child:nth-child(3n+1) { grid-column: 2; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
 /* --- Buttons --- */
