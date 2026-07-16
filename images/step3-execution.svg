@@ -1,0 +1,47 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B4A80"/>
+      <stop offset="100%" stop-color="#0F2E58"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg3)"/>
+
+  <!-- decorative rings -->
+  <circle cx="650" cy="90" r="140" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+  <circle cx="100" cy="520" r="120" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+
+  <!-- desk -->
+  <rect x="190" y="420" width="420" height="16" rx="8" fill="rgba(255,255,255,0.16)"/>
+  <rect x="215" y="436" width="16" height="70" fill="rgba(255,255,255,0.10)"/>
+  <rect x="569" y="436" width="16" height="70" fill="rgba(255,255,255,0.10)"/>
+
+  <!-- seated figure -->
+  <g fill="#F2A65A">
+    <circle cx="400" cy="250" r="44"/>
+    <path d="M400 298 c-70 0 -104 46 -104 112 l0 20 l208 0 l0 -20 c0 -66 -34 -112 -104 -112 z"/>
+  </g>
+
+  <!-- laptop -->
+  <g>
+    <rect x="340" y="392" width="120" height="14" rx="4" fill="#D6DEE8"/>
+    <path d="M330 392 l140 0 l-14 -60 l-112 0 z" fill="#FFFFFF"/>
+    <rect x="352" y="342" width="96" height="42" rx="2" fill="#0D2B55"/>
+  </g>
+
+  <!-- gear icon (active work / execution) -->
+  <g fill="#E8520A">
+    <circle cx="590" cy="180" r="28"/>
+    <g stroke="#E8520A" stroke-width="10">
+      <line x1="590" y1="132" x2="590" y2="146"/>
+      <line x1="590" y1="214" x2="590" y2="228"/>
+      <line x1="542" y1="180" x2="556" y2="180"/>
+      <line x1="624" y1="180" x2="638" y2="180"/>
+      <line x1="556" y1="146" x2="566" y2="156"/>
+      <line x1="614" y1="204" x2="624" y2="214"/>
+      <line x1="624" y1="146" x2="614" y2="156"/>
+      <line x1="566" y1="204" x2="556" y2="214"/>
+    </g>
+    <circle cx="590" cy="180" r="12" fill="#0F2E58"/>
+  </g>
+</svg>

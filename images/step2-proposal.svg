@@ -1,0 +1,34 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5091DA"/>
+      <stop offset="100%" stop-color="#2E6BB4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg2)"/>
+
+  <!-- decorative rings -->
+  <circle cx="90" cy="70" r="130" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <circle cx="730" cy="520" r="160" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- figure silhouette, seated, holding document -->
+  <g fill="rgba(13,43,85,0.85)">
+    <circle cx="420" cy="220" r="46"/>
+    <path d="M420 270 c-72 0 -108 50 -108 118 l0 90 l216 0 l0 -90 c0 -68 -36 -118 -108 -118 z"/>
+  </g>
+
+  <!-- document / clipboard -->
+  <g>
+    <rect x="300" y="330" width="150" height="190" rx="10" fill="#FFFFFF"/>
+    <rect x="322" y="308" width="106" height="30" rx="8" fill="#E8520A"/>
+    <rect x="320" y="370" width="106" height="10" rx="4" fill="#C9D6E8"/>
+    <rect x="320" y="396" width="106" height="10" rx="4" fill="#C9D6E8"/>
+    <rect x="320" y="422" width="70" height="10" rx="4" fill="#C9D6E8"/>
+  </g>
+
+  <!-- checkmark badge -->
+  <g>
+    <circle cx="470" cy="470" r="34" fill="#E8520A"/>
+    <path d="M454 470 l12 12 l24 -26" stroke="#FFFFFF" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
