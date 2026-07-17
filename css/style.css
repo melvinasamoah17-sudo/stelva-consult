@@ -1105,3 +1105,8 @@ a.footer-contact-item:hover {
   object-fit: cover;
   border-radius: 50%;
 }
+
+.map-section {
+  width: 100%;
+  line-height: 0; /* removes tiny gap iframe sometimes adds under itself */
+}
