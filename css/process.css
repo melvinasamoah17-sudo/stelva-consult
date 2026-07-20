@@ -42,7 +42,7 @@
   font-style: normal;
   color: var(--accent-soft);
 }
-.page-hero > p {
+.page-hero p:not(.page-hero-bc) {
   color: var(--white);
   font-size: 1.05rem;
   max-width: 560px;
