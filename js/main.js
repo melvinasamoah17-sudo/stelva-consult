@@ -15,6 +15,41 @@ if (window.emailjs) {
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 }
 
+/* ---- News slideshow (hero) ---- */
+let newsSlideIndex = 0;
+let newsSlideTimer = null;
+
+function showNewsSlide(index) {
+  const slides = document.querySelectorAll('#news-slideshow .slideshow-slide');
+  const dots   = document.querySelectorAll('#news-slide-dots .dot');
+  if (!slides.length) return;
+
+  if (index >= slides.length) newsSlideIndex = 0;
+  else if (index < 0) newsSlideIndex = slides.length - 1;
+  else newsSlideIndex = index;
+
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  slides[newsSlideIndex].classList.add('active');
+  if (dots[newsSlideIndex]) dots[newsSlideIndex].classList.add('active');
+}
+
+function changeNewsSlide(step) {
+  showNewsSlide(newsSlideIndex + step);
+  restartNewsAutoplay();
+}
+
+function goToNewsSlide(index) {
+  showNewsSlide(index);
+  restartNewsAutoplay();
+}
+
+function restartNewsAutoplay() {
+  clearInterval(newsSlideTimer);
+  newsSlideTimer = setInterval(() => showNewsSlide(newsSlideIndex + 1), 6000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- Navbar scroll behaviour ---- */
@@ -235,5 +270,16 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---- Year in footer ---- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---- Init news slideshow ---- */
+  if (document.getElementById('news-slideshow')) {
+    showNewsSlide(0);
+    restartNewsAutoplay();
+
+    // Pause autoplay while the user is hovering the slideshow
+    const newsEl = document.getElementById('news-slideshow');
+    newsEl.addEventListener('mouseenter', () => clearInterval(newsSlideTimer));
+    newsEl.addEventListener('mouseleave', restartNewsAutoplay);
+  }
 
 });
