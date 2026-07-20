@@ -568,6 +568,40 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
   border-radius: 5px;
 }
 
+/* News location badge — sits below the slideshow, white + orange */
+.news-location {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 16px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.news-location:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(232,82,10,0.25);
+  color: #C4430A;
+}
+.news-location-dot {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #FFF0E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
 /* =============================================
    TRUST BAR
    ============================================= */
