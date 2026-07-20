@@ -347,7 +347,7 @@ footer .brand-logo { height: 52px; }
 
 .hero-content p {
   font-size: 1.1rem;
-  color: rgba(255,255,255,0.7);
+  color: var(--white);
   max-width: 480px;
   margin-bottom: 36px;
   line-height: 1.7;
