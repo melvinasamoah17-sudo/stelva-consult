@@ -88,18 +88,53 @@
 
         <!-- Right: Visual card -->
         <div class="hero-visual fade-in" style="transition-delay:0.2s">
-          <div class="hero-card-main">
-            <div class="hero-card-icon">📋</div>
-            <h3>Our Core Services</h3>
-            <ul class="hero-service-list">
-              <li class="hero-service-item">Business Registration & Compliance</li>
-              <li class="hero-service-item">Tax Consultancy & Accounting</li>
-              <li class="hero-service-item">FDA & Regulatory Certificates</li>
-              <li class="hero-service-item">Management Consultancy</li>
-              <li class="hero-service-item">Bookkeeping & Auditing</li>
-              <li class="hero-service-item">GIPC & Operating Permits</li>
-            </ul>
+
+          <!-- News Slideshow (replaces Our Core Services card) -->
+          <div class="news-slideshow" id="news-slideshow" aria-label="Stelva News slideshow">
+
+            <div class="slideshow-slide active">
+              <div class="slide-image">
+                <img src="images/GRA.jpg" alt="Ghana Revenue Authority" />
+              </div>
+              <div class="slide-caption">
+                <span class="slide-tag">GRA &middot; July 2026</span>
+                <h3>Tax filing deadline extended to July 6</h3>
+                <p>Flooding in Accra pushed back Q2 CIT, PIT and May VAT/NHIL/CST deadlines — file late and normal penalties resume.</p>
+              </div>
+            </div>
+
+            <div class="slideshow-slide">
+              <div class="slide-image">
+                <img src="images/GIPC.jpg" alt="Ghana Investment Promotion Centre" />
+              </div>
+              <div class="slide-caption">
+                <span class="slide-tag">GIPC &middot; July 2026</span>
+                <h3>GIPC is becoming GIPA</h3>
+                <p>Parliament has passed the GIPA Bill 2026 — lower capital thresholds, annual renewals, and wider expatriate quotas once it's signed into law.</p>
+              </div>
+            </div>
+
+            <div class="slideshow-slide">
+              <div class="slide-image">
+                <img src="images/FDA.png" alt="Food and Drugs Authority Ghana" />
+              </div>
+              <div class="slide-caption">
+                <span class="slide-tag">FDA &middot; July 2026</span>
+                <h3>Ghana's FDA gaining regional standing</h3>
+                <p>Germany's Paul-Ehrlich-Institut is backing Ghana's FDA to become a regional hub for blood product regulation across West Africa.</p>
+              </div>
+            </div>
+
+            <a class="slide-arrow prev" onclick="changeNewsSlide(-1)" aria-label="Previous slide">&#10094;</a>
+            <a class="slide-arrow next" onclick="changeNewsSlide(1)" aria-label="Next slide">&#10095;</a>
           </div>
+
+          <div class="slide-dots" id="news-slide-dots">
+            <span class="dot active" onclick="goToNewsSlide(0)"></span>
+            <span class="dot" onclick="goToNewsSlide(1)"></span>
+            <span class="dot" onclick="goToNewsSlide(2)"></span>
+          </div>
+
           <div class="hero-floating top">
             <div class="hero-floating-dot">✅</div>
             Licensed &amp; Certified
