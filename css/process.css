@@ -43,7 +43,7 @@
   color: var(--accent-soft);
 }
 .page-hero > p {
-  color: rgba(255,255,255,0.65);
+  color: var(--white);
   font-size: 1.05rem;
   max-width: 560px;
   line-height: 1.75;
