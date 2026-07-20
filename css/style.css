@@ -1,5 +1,5 @@
 /* =============================================
-   STELVA LUTHNAEL CONSULT — Main Stylesheet
+   STELVA CONSULT — Main Stylesheet
    ============================================= */
 
 /* --- Variables & Reset --- */
@@ -1195,7 +1195,13 @@ a.footer-contact-item:hover {
   .about-visual,
   .contact-grid { grid-template-columns: 1fr; }
 
-  .hero-visual { display: none; }
+  .hero-visual {
+    display: flex;
+    margin-top: 44px;
+  }
+  .news-slideshow,
+  .news-location { max-width: 100%; }
+  .hero-floating.top { top: -14px; right: 4px; }
   .hero-stats { gap: 20px; }
   .hero-grid { padding: 60px 0 72px; }
 
