@@ -470,10 +470,9 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
   position: relative;
   width: 100%;
   max-width: 400px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(160deg, #C4430A 0%, var(--accent) 55%, var(--accent-soft) 100%);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(12px);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
@@ -514,7 +513,7 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent-soft);
+  color: var(--blue-light);
   margin-bottom: 10px;
 }
 .slide-caption h3 {
