@@ -1,5 +1,5 @@
 /* =============================================
-   STELVA CONSULT — Main Stylesheet
+   STELVA LUTHNAEL CONSULT — Main Stylesheet
    ============================================= */
 
 /* --- Variables & Reset --- */
@@ -715,6 +715,17 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
   margin-bottom: 20px;
 }
 .service-card h3 { margin-bottom: 10px; font-size: 1.05rem; }
+
+/* Licenses & Permits — compact icon-only cards */
+.license-grid .service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 26px 20px;
+}
+.license-grid .service-icon { margin-bottom: 14px; }
+.license-grid .service-card h3 { margin-bottom: 0; font-size: 0.98rem; }
 .service-card p  { font-size: 0.88rem; line-height: 1.65; }
 
 /* =============================================
