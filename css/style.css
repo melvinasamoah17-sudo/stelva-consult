@@ -716,16 +716,52 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
 }
 .service-card h3 { margin-bottom: 10px; font-size: 1.05rem; }
 
-/* Licenses & Permits — compact icon-only cards */
-.license-grid .service-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 26px 20px;
+/* Licenses & Permits — clean list panel */
+.license-panel {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-lg);
+  padding: 12px 8px;
+  box-shadow: var(--shadow);
 }
-.license-grid .service-icon { margin-bottom: 14px; }
-.license-grid .service-card h3 { margin-bottom: 0; font-size: 0.98rem; }
+.license-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.license-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 24px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1px solid var(--gray-light);
+  transition: var(--transition);
+}
+.license-list li:hover {
+  background: var(--off-white);
+  padding-left: 30px;
+}
+.license-list li:nth-child(odd) { border-right: 1px solid var(--gray-light); }
+.license-list li:nth-last-child(-n+2) { border-bottom: none; }
+.license-dot {
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #FFF0E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+}
+@media (max-width: 640px) {
+  .license-list { grid-template-columns: 1fr; }
+  .license-list li:nth-child(odd) { border-right: none; }
+  .license-list li:nth-last-child(-n+2) { border-bottom: 1px solid var(--gray-light); }
+  .license-list li:last-child { border-bottom: none; }
+}
 .service-card p  { font-size: 0.88rem; line-height: 1.65; }
 
 /* =============================================
