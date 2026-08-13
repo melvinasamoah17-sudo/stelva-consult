@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>News Manager — Stelva Consult</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D2B55; --navy-dark:#081A36; --accent:#E8520A; --accent-soft:#F4894A;
+    --off:#F5F7FA; --gray:#8A96A8; --gray-light:#E8ECF2; --text:#1C2B3A; --white:#fff;
+    --radius:8px; --radius-lg:14px; --shadow:0 4px 20px rgba(13,43,85,0.10);
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin:0; font-family:'Inter',sans-serif; background:var(--off); color:var(--text);
+    padding-bottom:80px;
+  }
+  header{
+    background:var(--navy); color:#fff; padding:22px 24px; display:flex;
+    align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  header h1{ font-family:'Playfair Display',serif; font-size:1.4rem; margin:0; }
+  header p{ margin:2px 0 0; font-size:0.82rem; color:rgba(255,255,255,0.65); }
+  .wrap{ max-width:960px; margin:0 auto; padding:28px 20px; }
+  .card{
+    background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow);
+    padding:24px; margin-bottom:24px;
+  }
+  .card h2{ font-size:1.05rem; margin:0 0 4px; color:var(--navy); }
+  .card .hint{ font-size:0.82rem; color:var(--gray); margin:0 0 18px; line-height:1.5; }
+  label{ display:block; font-size:0.82rem; font-weight:600; color:var(--navy); margin:14px 0 6px; }
+  label:first-of-type{ margin-top:0; }
+  input[type=text], input[type=date], textarea, select{
+    width:100%; padding:10px 12px; border:1px solid var(--gray-light); border-radius:var(--radius);
+    font-family:inherit; font-size:0.9rem; color:var(--text); background:#fff;
+  }
+  textarea{ resize:vertical; min-height:110px; line-height:1.5; }
+  .row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .row2{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  @media (max-width:640px){ .row,.row2{ grid-template-columns:1fr; } }
+  .img-preview{
+    margin-top:10px; width:160px; height:110px; border-radius:var(--radius);
+    background:var(--gray-light); display:flex; align-items:center; justify-content:center;
+    overflow:hidden; font-size:0.75rem; color:var(--gray); text-align:center;
+  }
+  .img-preview img{ width:100%; height:100%; object-fit:cover; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; border:none; border-radius:999px;
+    padding:11px 22px; font-size:0.88rem; font-weight:600; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--accent); color:#fff; }
+  .btn-navy{ background:var(--navy); color:#fff; }
+  .btn-outline{ background:#fff; color:var(--navy); border:1.5px solid var(--gray-light); }
+  .btn-danger{ background:#fff; color:#C0392B; border:1.5px solid #F3C9C2; }
+  .btn-sm{ padding:6px 14px; font-size:0.78rem; }
+  .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:18px; }
+  .status{ font-size:0.82rem; margin-top:10px; min-height:18px; }
+  .status.ok{ color:#1E7E34; }
+  .status.err{ color:#C0392B; }
+
+  .item-list{ display:flex; flex-direction:column; gap:12px; }
+  .item-row{
+    display:flex; gap:14px; align-items:center; padding:12px; border:1px solid var(--gray-light);
+    border-radius:var(--radius);
+  }
+  .item-row img{ width:64px; height:48px; object-fit:cover; border-radius:6px; background:var(--gray-light); flex-shrink:0; }
+  .item-row .meta{ flex:1; min-width:0; }
+  .item-row .tag{
+    font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--accent); background:rgba(232,82,10,.08); padding:2px 9px; border-radius:20px; margin-right:8px;
+  }
+  .item-row .headline{ font-weight:600; font-size:0.9rem; margin:4px 0 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .item-row .date{ font-size:0.75rem; color:var(--gray); }
+  .item-row .row-actions{ display:flex; gap:8px; flex-shrink:0; }
+  .empty-note{ color:var(--gray); font-size:0.88rem; }
+
+  .steps{ font-size:0.85rem; line-height:1.7; color:var(--text); padding-left:20px; margin:0; }
+  .badge-warn{
+    background:#FFF6E5; border:1px solid #F4D998; color:#8A5B00; font-size:0.78rem;
+    padding:10px 14px; border-radius:var(--radius); margin-bottom:16px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>📰 Stelva News Manager</h1>
+    <p>Add, edit, or remove news items — no coding required.</p>
+  </div>
+  <a class="btn btn-outline btn-sm" href="/news" style="color:var(--navy);">View live News page →</a>
+</header>
+
+<div class="wrap">
+
+  <div class="badge-warn">
+    This page isn't linked anywhere on the public site and doesn't require a login — anyone with the exact
+    web address could open it. Don't share this link publicly.
+  </div>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <div class="card">
+    <h2>How this works</h2>
+    <p class="hint" style="margin-bottom:10px;">Since the website doesn't have its own server/database, adding news happens in two quick steps:</p>
+    <ol class="steps">
+      <li>Fill in the form below and click <strong>"Add to list."</strong> Repeat for as many items as you like, or edit/delete existing ones.</li>
+      <li>Click <strong>"Download updated news-data.json"</strong>, then upload that one file to the website's GitHub repository (replacing the old one) — the same way images or files are usually uploaded there. The live site updates automatically within a minute or two.</li>
+    </ol>
+  </div>
+
+  <!-- ================= LOAD EXISTING DATA ================= -->
+  <div class="card">
+    <h2>1. Load current news</h2>
+    <p class="hint">If you're viewing this page on the live website, current news items load automatically below. If not (or if loading fails), upload your current <code>news-data.json</code> file here.</p>
+    <input type="file" id="jsonUpload" accept="application/json" />
+    <div class="status" id="loadStatus"></div>
+  </div>
+
+  <!-- ================= CURRENT ITEMS ================= -->
+  <div class="card">
+    <h2>2. Current news items</h2>
+    <div class="item-list" id="itemList"><p class="empty-note">Nothing loaded yet.</p></div>
+  </div>
+
+  <!-- ================= ADD / EDIT FORM ================= -->
+  <div class="card">
+    <h2 id="formTitle">3. Add a news item</h2>
+    <p class="hint">Leave "Editing" blank to add a brand-new item.</p>
+
+    <input type="hidden" id="editId" />
+
+    <div class="row2">
+      <div>
+        <label>Tag / Category</label>
+        <input type="text" id="fTag" placeholder="e.g. GRA, GIPC, FDA" />
+      </div>
+      <div>
+        <label>Date</label>
+        <input type="date" id="fDate" />
+      </div>
+      <div>
+        <label>Date label (optional, shown on homepage)</label>
+        <input type="text" id="fDateLabel" placeholder="e.g. July 2026" />
+      </div>
+    </div>
+
+    <label>Headline</label>
+    <input type="text" id="fHeadline" placeholder="e.g. Tax filing deadline extended to July 6" />
+
+    <label>Short summary (shown on the homepage preview)</label>
+    <textarea id="fTeaser" style="min-height:70px" placeholder="One or two sentences summarizing the update."></textarea>
+
+    <label>Full story</label>
+    <textarea id="fBody" style="min-height:160px" placeholder="Write the full update here.
+
+Leave a blank line between paragraphs.
+
+Start a line with '- ' to make a bullet point:
+- Like this
+- And this
+
+Wrap words in **double asterisks** to make them bold."></textarea>
+
+    <label>Image</label>
+    <input type="file" id="fImageFile" accept="image/*" />
+    <p class="hint" style="margin:6px 0 0;">Photos are automatically resized — no need to shrink them yourself. Or paste an image URL instead:</p>
+    <input type="text" id="fImageUrl" placeholder="images/example.jpg or https://..." style="margin-top:6px" />
+    <div class="img-preview" id="imgPreview">No image yet</div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="saveBtn">Add to list</button>
+      <button class="btn btn-outline" id="clearFormBtn">Clear form</button>
+    </div>
+    <div class="status" id="formStatus"></div>
+  </div>
+
+  <!-- ================= EXPORT ================= -->
+  <div class="card">
+    <h2>4. Save your changes</h2>
+    <p class="hint">Once you're happy with the list above, download the updated file and upload it to GitHub to publish.</p>
+    <div class="actions">
+      <button class="btn btn-navy" id="downloadBtn">⬇ Download updated news-data.json</button>
+      <button class="btn btn-outline" id="copyBtn">Copy JSON to clipboard</button>
+    </div>
+    <div class="status" id="exportStatus"></div>
+  </div>
+
+</div>
+
+<script>
+let newsItems = [];
+
+const $ = (id) => document.getElementById(id);
+
+/* ---------- Load existing data ---------- */
+function tryAutoLoad() {
+  fetch('news-data.json', { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+    .then(data => {
+      newsItems = Array.isArray(data) ? data : [];
+      renderItemList();
+      setStatus('loadStatus', `Loaded ${newsItems.length} existing item(s) automatically.`, 'ok');
+    })
+    .catch(() => {
+      setStatus('loadStatus', 'Could not auto-load news-data.json (this is normal if you\'re not viewing this from the live site). Please upload the file above.', 'err');
+    });
+}
+
+$('jsonUpload').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      newsItems = JSON.parse(reader.result);
+      if (!Array.isArray(newsItems)) throw new Error();
+      renderItemList();
+      setStatus('loadStatus', `Loaded ${newsItems.length} item(s) from uploaded file.`, 'ok');
+    } catch {
+      setStatus('loadStatus', 'That file doesn\'t look like a valid news-data.json.', 'err');
+    }
+  };
+  reader.readAsText(file);
+});
+
+/* ---------- Render list ---------- */
+function renderItemList() {
+  const list = $('itemList');
+  if (!newsItems.length) {
+    list.innerHTML = '<p class="empty-note">No news items yet — add your first one below.</p>';
+    return;
+  }
+  const sorted = [...newsItems].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  list.innerHTML = sorted.map(item => `
+    <div class="item-row">
+      <img src="${item.image || ''}" onerror="this.style.visibility='hidden'" />
+      <div class="meta">
+        <span class="tag">${escapeHtml(item.tag || '')}</span>
+        <span class="date">${escapeHtml(item.date || '')}</span>
+        <p class="headline">${escapeHtml(item.headline || '(untitled)')}</p>
+      </div>
+      <div class="row-actions">
+        <button class="btn btn-outline btn-sm" onclick="editItem('${item.id}')">Edit</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteItem('${item.id}')">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str || '';
+  return d.innerHTML;
+}
+
+/* ---------- Text formatting helper ---------- */
+function textToHtml(text) {
+  const blocks = (text || '').split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+  return blocks.map(block => {
+    const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+    if (lines.length && lines.every(l => l.startsWith('- '))) {
+      return '<ul>' + lines.map(l => `<li>${inlineFormat(l.slice(2))}</li>`).join('') + '</ul>';
+    }
+    return `<p>${inlineFormat(lines.join(' '))}</p>`;
+  }).join('');
+}
+function inlineFormat(s) {
+  return escapeHtml(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+/* ---------- Image handling (resize + embed as base64) ---------- */
+let pendingImageDataUrl = null;
+
+$('fImageFile').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const img = new Image();
+    img.onload = () => {
+      const maxW = 900;
+      const scale = Math.min(1, maxW / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      pendingImageDataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      $('fImageUrl').value = '';
+      showImgPreview(pendingImageDataUrl);
+    };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+$('fImageUrl').addEventListener('input', () => {
+  pendingImageDataUrl = null;
+  if ($('fImageUrl').value.trim()) showImgPreview($('fImageUrl').value.trim());
+});
+
+function showImgPreview(src) {
+  $('imgPreview').innerHTML = `<img src="${src}" onerror="this.parentElement.textContent='Couldn\\'t load preview'" />`;
+}
+
+/* ---------- Save / Edit / Delete ---------- */
+$('saveBtn').addEventListener('click', () => {
+  const tag = $('fTag').value.trim();
+  const headline = $('fHeadline').value.trim();
+  const date = $('fDate').value;
+
+  if (!tag || !headline || !date) {
+    setStatus('formStatus', 'Please fill in at least Tag, Date, and Headline.', 'err');
+    return;
+  }
+
+  const image = pendingImageDataUrl || $('fImageUrl').value.trim() || 'images/logo.png';
+  const editId = $('editId').value;
+
+  const entry = {
+    id: editId || (tag.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + date),
+    tag,
+    date,
+    dateLabel: $('fDateLabel').value.trim(),
+    headline,
+    teaser: $('fTeaser').value.trim(),
+    image,
+    bodyHtml: textToHtml($('fBody').value)
+  };
+
+  if (editId) {
+    newsItems = newsItems.map(it => it.id === editId ? entry : it);
+    setStatus('formStatus', 'Item updated in the list below. Don\'t forget to download when you\'re done.', 'ok');
+  } else {
+    newsItems.push(entry);
+    setStatus('formStatus', 'Added to the list below. Don\'t forget to download when you\'re done.', 'ok');
+  }
+
+  renderItemList();
+  clearForm();
+});
+
+function editItem(id) {
+  const item = newsItems.find(it => it.id === id);
+  if (!item) return;
+  $('editId').value = item.id;
+  $('fTag').value = item.tag || '';
+  $('fDate').value = item.date || '';
+  $('fDateLabel').value = item.dateLabel || '';
+  $('fHeadline').value = item.headline || '';
+  $('fTeaser').value = item.teaser || '';
+  $('fBody').value = htmlToPlainForEdit(item.bodyHtml || '');
+  $('fImageUrl').value = item.image || '';
+  pendingImageDataUrl = null;
+  if (item.image) showImgPreview(item.image);
+  $('formTitle').textContent = 'Editing: ' + item.headline;
+  $('saveBtn').textContent = 'Save changes';
+  window.scrollTo({ top: $('formTitle').getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' });
+}
+
+function htmlToPlainForEdit(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  const parts = [];
+  div.childNodes.forEach(node => {
+    if (node.nodeName === 'P') parts.push(node.textContent.replace(/\u00A0/g, ' '));
+    else if (node.nodeName === 'UL') {
+      parts.push([...node.children].map(li => '- ' + li.textContent).join('\n'));
+    }
+  });
+  return parts.join('\n\n');
+}
+
+function deleteItem(id) {
+  if (!confirm('Remove this news item from the list?')) return;
+  newsItems = newsItems.filter(it => it.id !== id);
+  renderItemList();
+}
+
+function clearForm() {
+  $('editId').value = '';
+  $('fTag').value = '';
+  $('fDate').value = '';
+  $('fDateLabel').value = '';
+  $('fHeadline').value = '';
+  $('fTeaser').value = '';
+  $('fBody').value = '';
+  $('fImageUrl').value = '';
+  $('fImageFile').value = '';
+  pendingImageDataUrl = null;
+  $('imgPreview').innerHTML = 'No image yet';
+  $('formTitle').textContent = '3. Add a news item';
+  $('saveBtn').textContent = 'Add to list';
+}
+$('clearFormBtn').addEventListener('click', clearForm);
+
+/* ---------- Export ---------- */
+$('downloadBtn').addEventListener('click', () => {
+  if (!newsItems.length) {
+    setStatus('exportStatus', 'Nothing to download yet — add at least one item.', 'err');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(newsItems, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'news-data.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  setStatus('exportStatus', 'Downloaded! Now upload this file to GitHub, replacing the old news-data.json.', 'ok');
+});
+
+$('copyBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText(JSON.stringify(newsItems, null, 2))
+    .then(() => setStatus('exportStatus', 'Copied to clipboard.', 'ok'))
+    .catch(() => setStatus('exportStatus', 'Could not copy — try the download button instead.', 'err'));
+});
+
+function setStatus(id, msg, cls) {
+  const el = $(id);
+  el.textContent = msg;
+  el.className = 'status ' + (cls || '');
+}
+
+tryAutoLoad();
+</script>
+
+</body>
+</html>
