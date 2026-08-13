@@ -50,6 +50,57 @@ function restartNewsAutoplay() {
   newsSlideTimer = setInterval(() => showNewsSlide(newsSlideIndex + 1), 6000);
 }
 
+/* ---- Load latest 3 news items from news-data.json (falls back to the
+   static markup already in the page if this fails or is unavailable) ---- */
+function loadHeroNewsFromData() {
+  const slideshow = document.getElementById('news-slideshow');
+  const dotsWrap = document.getElementById('news-slide-dots');
+  if (!slideshow || !dotsWrap) return;
+
+  fetch('news-data.json', { cache: 'no-store' })
+    .then(res => res.json())
+    .then(items => {
+      if (!Array.isArray(items) || !items.length) return;
+
+      const latest = [...items]
+        .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+        .slice(0, 3);
+
+      const esc = (s) => {
+        const d = document.createElement('div');
+        d.textContent = s || '';
+        return d.innerHTML;
+      };
+
+      const slidesHtml = latest.map((item, i) => `
+        <div class="slideshow-slide${i === 0 ? ' active' : ''}">
+          <div class="slide-image">
+            <img src="${item.image}" alt="${esc(item.headline || item.tag || 'News')}" />
+          </div>
+          <div class="slide-caption">
+            <span class="slide-tag">${esc(item.tag || '')}${item.dateLabel ? ' &middot; ' + esc(item.dateLabel) : ''}</span>
+            <h3>${esc(item.headline || '')}</h3>
+            <p>${esc(item.teaser || '')}</p>
+          </div>
+        </div>
+      `).join('');
+
+      const dotsHtml = latest.map((_, i) =>
+        `<span class="dot${i === 0 ? ' active' : ''}" onclick="goToNewsSlide(${i})"></span>`
+      ).join('');
+
+      // Remove old static slides, keep the arrow controls
+      slideshow.querySelectorAll('.slideshow-slide').forEach(el => el.remove());
+      slideshow.insertAdjacentHTML('afterbegin', slidesHtml);
+      dotsWrap.innerHTML = dotsHtml;
+
+      newsSlideIndex = 0;
+      showNewsSlide(0);
+      restartNewsAutoplay();
+    })
+    .catch(() => { /* keep the static fallback slides already in the page */ });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- Navbar scroll behaviour ---- */
@@ -275,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('news-slideshow')) {
     showNewsSlide(0);
     restartNewsAutoplay();
+    loadHeroNewsFromData();
 
     // Pause autoplay while the user is hovering the slideshow
     const newsEl = document.getElementById('news-slideshow');
