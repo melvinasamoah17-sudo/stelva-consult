@@ -23,20 +23,21 @@
   <!-- ===================== TOP LOCATION BAR ===================== -->
   <div class="top-location-bar">
     <div class="container top-location-inner">
-      <a class="top-location-link" href="https://maps.app.goo.gl/4oCT2Y3pXH24uhpu9?g_st=ac" target="_blank" rel="noopener noreferrer">
-        <span>📍</span> Pension Drive, Opposite Premier Towers, Ministries, Accra, Ghana
+      <a href="index.html" class="top-bar-logo" aria-label="Stelva Luthnael Consult home">
+        <img src="images/logo.png" alt="Stelva Consult" class="brand-logo" />
       </a>
-      <span class="top-location-hours">🕐 Mon – Fri: 8:00am – 5:00pm</span>
+      <div class="top-location-meta">
+        <a class="top-location-link" href="https://maps.app.goo.gl/4oCT2Y3pXH24uhpu9?g_st=ac" target="_blank" rel="noopener noreferrer">
+          <span>📍</span> Pension Drive, Opposite Premier Towers, Ministries, Accra, Ghana
+        </a>
+        <span class="top-location-hours">🕐 Mon – Fri: 8:00am – 5:00pm</span>
+      </div>
     </div>
   </div>
 
   <!-- ===================== NAVBAR ===================== -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Stelva Luthnael Consult home">
-        <img src="images/logo.png" alt="Stelva Consult" class="brand-logo" />
-      </a>
-
       <div class="nav-links" role="navigation" aria-label="Main navigation">
         <a href="index.html" class="active">Home</a>         
         <a href="about.html" class="active">About Us</a>
@@ -102,7 +103,7 @@
         <div class="hero-visual fade-in" style="transition-delay:0.2s">
 
           <!-- News Slideshow (replaces Our Core Services card) -->
-          <div class="news-slideshow" id="news-slideshow" aria-label="Stelva News slideshow">
+          <a class="news-slideshow" id="news-slideshow" href="news.html" aria-label="Read the latest Stelva News">
 
             <div class="slideshow-slide active">
               <div class="slide-image">
@@ -137,9 +138,9 @@
               </div>
             </div>
 
-            <a class="slide-arrow prev" onclick="changeNewsSlide(-1)" aria-label="Previous slide">&#10094;</a>
-            <a class="slide-arrow next" onclick="changeNewsSlide(1)" aria-label="Next slide">&#10095;</a>
-          </div>
+            <span class="slide-arrow prev" onclick="event.preventDefault(); event.stopPropagation(); changeNewsSlide(-1);" aria-label="Previous slide">&#10094;</span>
+            <span class="slide-arrow next" onclick="event.preventDefault(); event.stopPropagation(); changeNewsSlide(1);" aria-label="Next slide">&#10095;</span>
+          </a>
 
           <div class="slide-dots" id="news-slide-dots">
             <span class="dot active" onclick="goToNewsSlide(0)"></span>
