@@ -176,14 +176,14 @@ section { padding: 90px 0; }
 }
 footer .brand-logo { height: 52px; }
 
-/* Home page: top location bar + larger logo */
+/* Home page: top bar (logo + location) + link-only navbar below */
 .top-location-bar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1001;
   background: var(--navy-dark);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 8px 24px;
+  border-bottom: 2px solid rgba(232, 82, 10, 0.35);
+  padding: 14px 24px;
 }
 .top-location-inner {
   max-width: 1160px;
@@ -191,8 +191,17 @@ footer .brand-logo { height: 52px; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
   font-size: 0.78rem;
+}
+.top-bar-logo { display: flex; align-items: center; flex-shrink: 0; }
+.top-bar-logo .brand-logo { height: 44px; }
+.top-location-meta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .top-location-link {
   display: flex;
@@ -207,17 +216,18 @@ footer .brand-logo { height: 52px; }
   color: rgba(255,255,255,0.55);
   white-space: nowrap;
 }
-body.home #navbar { top: 34px; }
-body.home .mobile-menu { top: 106px; }
-body.home #hero { padding-top: 106px; }
-body.home .brand-logo { height: 60px; }
+body.home #navbar { top: 72px; padding-top: 6px; }
+body.home .nav-inner { justify-content: center; }
+body.home .mobile-menu { top: 144px; }
+body.home #hero { padding-top: 144px; }
 
 @media (max-width: 640px) {
-  .top-location-bar { padding: 6px 16px; }
+  .top-location-bar { padding: 10px 16px; }
+  .top-bar-logo .brand-logo { height: 34px; }
   .top-location-hours { display: none; }
-  body.home #navbar { top: 30px; }
-  body.home .mobile-menu { top: 102px; }
-  body.home #hero { padding-top: 100px; }
+  body.home #navbar { top: 54px; }
+  body.home .mobile-menu { top: 126px; }
+  body.home #hero { padding-top: 126px; }
 }
 .logo-mark {
   width: 44px;
@@ -587,6 +597,7 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
    ============================================= */
 .news-slideshow {
   position: relative;
+  display: block;
   width: 100%;
   max-width: 460px;
   background: linear-gradient(160deg, #C4430A 0%, var(--accent) 55%, var(--accent-soft) 100%);
@@ -594,6 +605,13 @@ a.hero-floating:hover { box-shadow: 0 10px 30px rgba(13,43,85,0.25); color: var(
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.news-slideshow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(13,43,85,0.28);
 }
 
 .slideshow-slide {
