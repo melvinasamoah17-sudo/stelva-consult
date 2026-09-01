@@ -176,58 +176,151 @@ section { padding: 90px 0; }
 }
 footer .brand-logo { height: 52px; }
 
-/* Home page: top bar (logo + location) + link-only navbar below */
-.top-location-bar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1001;
-  background: var(--navy-dark);
-  border-bottom: 2px solid rgba(232, 82, 10, 0.35);
-  padding: 14px 24px;
+/* =============================================
+   HOME PAGE — Institutional-style header
+   ============================================= */
+:root {
+  --gov-green: #1D4D33;
+  --gov-green-dark: #123423;
 }
-.top-location-inner {
-  max-width: 1160px;
+
+body.home #navbar { position: relative; top: auto; padding: 0; }
+body.home #hero { padding-top: 48px; }
+
+.gov-topbar {
+  background: var(--white);
+  border-bottom: 3px solid var(--gov-green);
+  padding: 22px 24px;
+}
+.gov-topbar-inner {
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  font-size: 0.78rem;
-}
-.top-bar-logo { display: flex; align-items: center; flex-shrink: 0; }
-.top-bar-logo .brand-logo { height: 44px; }
-.top-location-meta {
-  display: flex;
-  align-items: center;
   gap: 28px;
   flex-wrap: wrap;
-  justify-content: flex-end;
 }
-.top-location-link {
+
+.gov-logo { display: flex; align-items: center; flex-shrink: 0; }
+.gov-logo-img {
+  height: 84px;
+  width: auto;
+  display: block;
+}
+
+.gov-topbar-center { flex: 1; min-width: 260px; }
+.gov-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--navy);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.gov-topbar-meta {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  transition: var(--transition);
+  gap: 36px;
+  flex-wrap: wrap;
 }
-.top-location-link:hover { color: var(--accent-soft); }
-.top-location-hours {
-  color: rgba(255,255,255,0.55);
+.gov-meta-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.gov-meta-icon { font-size: 1.1rem; line-height: 1.3; }
+.gov-meta-item strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.gov-meta-item p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.gov-topbar-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  background: var(--off-white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  flex-shrink: 0;
+}
+.gov-badge-icon { font-size: 1.6rem; }
+.gov-topbar-badge span:last-child {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy);
   white-space: nowrap;
 }
-body.home #navbar { top: 72px; padding-top: 6px; }
-body.home .nav-inner { justify-content: center; }
-body.home .mobile-menu { top: 144px; }
-body.home #hero { padding-top: 144px; }
+
+/* Navigation bar — full width, dark green, white text */
+.gov-navbar {
+  background: var(--gov-green);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+body.home #navbar.scrolled {
+  background: var(--gov-green);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  padding: 0;
+}
+.gov-navbar .nav-inner {
+  justify-content: center;
+  height: 58px;
+}
+.gov-navbar .nav-links { gap: 8px; }
+.gov-navbar .nav-links a {
+  color: rgba(255,255,255,0.88);
+  font-weight: 600;
+}
+.gov-navbar .nav-links a:hover,
+.gov-navbar .nav-links a.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.12);
+}
+.gov-navbar .nav-links a.active {
+  position: relative;
+  color: var(--accent-soft);
+  background: transparent;
+}
+.gov-navbar .nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px; bottom: 2px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.gov-navbar .nav-links a.nav-cta.active::after { display: none; }
+
+/* Mobile dropdown menu sits directly under the (now static) header, in normal flow */
+body.home .mobile-menu {
+  position: static;
+  background: var(--gov-green-dark);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 900px) {
+  .gov-topbar-meta { gap: 20px; }
+  .gov-topbar-badge { display: none; }
+}
 
 @media (max-width: 640px) {
-  .top-location-bar { padding: 10px 16px; }
-  .top-bar-logo .brand-logo { height: 34px; }
-  .top-location-hours { display: none; }
-  body.home #navbar { top: 54px; }
-  body.home .mobile-menu { top: 126px; }
-  body.home #hero { padding-top: 126px; }
+  .gov-topbar { padding: 16px; }
+  .gov-logo-img { height: 52px; }
+  .gov-topbar-center { display: none; }
+  .gov-topbar-inner { justify-content: center; }
+  body.home #hero { padding-top: 32px; }
 }
 .logo-mark {
   width: 44px;
