@@ -180,15 +180,15 @@ footer .brand-logo { height: 52px; }
    HOME PAGE — Institutional-style header
    ============================================= */
 :root {
-  --gov-green: #1D4D33;
-  --gov-green-dark: #123423;
+  --gov-green: #E8520A;
+  --gov-green-dark: #B8410A;
 }
 
 body.home #navbar { position: relative; top: auto; padding: 0; }
 body.home #hero { padding-top: 48px; }
 
 .gov-topbar {
-  background: var(--white);
+  background: var(--navy);
   border-bottom: 3px solid var(--gov-green);
   padding: 22px 24px;
 }
@@ -213,7 +213,7 @@ body.home #hero { padding-top: 48px; }
 .gov-tagline {
   font-family: var(--font-display);
   font-style: italic;
-  color: var(--navy);
+  color: var(--white);
   font-size: 0.95rem;
   font-weight: 600;
   margin: 0 0 10px;
@@ -234,13 +234,13 @@ body.home #hero { padding-top: 48px; }
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--navy);
+  color: var(--white);
   margin-bottom: 2px;
 }
 .gov-meta-item p {
   margin: 0;
   font-size: 0.8rem;
-  color: var(--gray);
+  color: rgba(255,255,255,0.65);
   line-height: 1.5;
 }
 
@@ -290,7 +290,7 @@ body.home #navbar.scrolled {
 }
 .gov-navbar .nav-links a.active {
   position: relative;
-  color: var(--accent-soft);
+  color: var(--white);
   background: transparent;
 }
 .gov-navbar .nav-links a.active::after {
@@ -298,8 +298,14 @@ body.home #navbar.scrolled {
   position: absolute;
   left: 14px; right: 14px; bottom: 2px;
   height: 3px;
-  background: var(--accent);
+  background: var(--navy);
   border-radius: 2px;
+}
+.gov-navbar .nav-links a.nav-cta {
+  background: var(--navy) !important;
+}
+.gov-navbar .nav-links a.nav-cta:hover {
+  background: var(--navy-dark) !important;
 }
 .gov-navbar .nav-links a.nav-cta.active::after { display: none; }
 
