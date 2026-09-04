@@ -276,9 +276,10 @@ body.home #navbar.scrolled {
 }
 .gov-navbar .nav-inner {
   justify-content: center;
-  height: 58px;
+  height: 68px;
+  padding-top: 6px;
 }
-.gov-navbar .nav-links { gap: 8px; }
+.gov-navbar .nav-links { gap: 4px; }
 .gov-navbar .nav-links a {
   color: rgba(255,255,255,0.88);
   font-weight: 600;
@@ -308,6 +309,65 @@ body.home #navbar.scrolled {
   background: var(--navy-dark) !important;
 }
 .gov-navbar .nav-links a.nav-cta.active::after { display: none; }
+
+/* Dropdown submenus (About Us, Services) */
+.gov-navbar .nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.gov-navbar .nav-item > a { padding-right: 4px; }
+.gov-navbar .dropdown-toggle {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 4px 10px 4px 2px;
+  transition: transform 0.2s ease, color var(--transition);
+}
+.gov-navbar .dropdown-toggle:hover { color: var(--white); }
+.gov-navbar .nav-item:hover .dropdown-toggle,
+.gov-navbar .nav-item.open .dropdown-toggle {
+  transform: rotate(180deg);
+  color: var(--white);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: var(--navy-dark);
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 500;
+}
+.gov-navbar .nav-item:hover .nav-dropdown,
+.gov-navbar .nav-item.open .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+  background: none;
+}
+.nav-dropdown a:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+}
 
 /* Mobile dropdown menu sits directly under the (now static) header, in normal flow */
 body.home .mobile-menu {
