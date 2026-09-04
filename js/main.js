@@ -132,6 +132,33 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  /* ---- Nav dropdown submenus (About Us, Services) ---- */
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const toggle = item.querySelector('.dropdown-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = item.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      // Close any other open dropdowns
+      document.querySelectorAll('.nav-item.open').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('open');
+          const otherToggle = other.querySelector('.dropdown-toggle');
+          if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item.open').forEach(item => {
+      item.classList.remove('open');
+      const toggle = item.querySelector('.dropdown-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   /* ---- Mobile hamburger ---- */
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
