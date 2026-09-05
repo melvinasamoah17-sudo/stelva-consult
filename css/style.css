@@ -310,15 +310,15 @@ body.home #navbar.scrolled {
 }
 .gov-navbar .nav-links a.nav-cta.active::after { display: none; }
 
-/* Dropdown submenus (About Us, Services) */
-.gov-navbar .nav-item {
+/* Dropdown submenus — work on every page's nav, not just the home page's gov-navbar */
+.nav-item {
   position: relative;
   display: flex;
   align-items: center;
   height: 100%;
 }
-.gov-navbar .nav-item > a { padding-right: 4px; }
-.gov-navbar .dropdown-toggle {
+.nav-item > a { padding-right: 4px; }
+.dropdown-toggle {
   background: none;
   border: none;
   color: rgba(255,255,255,0.8);
@@ -327,9 +327,9 @@ body.home #navbar.scrolled {
   padding: 4px 10px 4px 2px;
   transition: transform 0.2s ease, color var(--transition);
 }
-.gov-navbar .dropdown-toggle:hover { color: var(--white); }
-.gov-navbar .nav-item:hover .dropdown-toggle,
-.gov-navbar .nav-item.open .dropdown-toggle {
+.dropdown-toggle:hover { color: var(--white); }
+.nav-item:hover .dropdown-toggle,
+.nav-item.open .dropdown-toggle {
   transform: rotate(180deg);
   color: var(--white);
 }
@@ -349,8 +349,8 @@ body.home #navbar.scrolled {
   transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   z-index: 500;
 }
-.gov-navbar .nav-item:hover .nav-dropdown,
-.gov-navbar .nav-item.open .nav-dropdown {
+.nav-item:hover .nav-dropdown,
+.nav-item.open .nav-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
