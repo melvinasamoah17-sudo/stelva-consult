@@ -29,17 +29,94 @@
       </a>
 
       <div class="nav-links" role="navigation" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services</a>
-        <a href="process.html">Process</a>
-        <a href="management.html">Management</a>
-        <a href="why-us.html" class="active">Why Us</a>
-        <a href="testimonials.html">Reviews</a>
-        <a href="news.html">News</a>
+        <div class="nav-item">
+          <a href="index.html">Home</a>
+          <button class="dropdown-toggle" aria-label="Toggle Home submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="index.html#hero">Overview</a>
+            <a href="news.html">Latest News</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="about.html">About Us</a>
+          <button class="dropdown-toggle" aria-label="Toggle About Us submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="about.html#our-story">Our Story</a>
+            <a href="about.html#mission-vision">Mission &amp; Vision</a>
+            <a href="about.html#core-values">Core Values</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="services.html">Services</a>
+          <button class="dropdown-toggle" aria-label="Toggle Services submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="services.html#business-advisory">Business Advisory</a>
+            <a href="services.html#compliance">Business Regulatory &amp; Compliance</a>
+            <a href="services.html#licenses">Licenses &amp; Permits</a>
+            <a href="services.html#financial">Financial Services</a>
+            <a href="services.html#legal">Legal Services</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="process.html">Process</a>
+          <button class="dropdown-toggle" aria-label="Toggle Process submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="process.html#step-consultation">Initial Consultation</a>
+            <a href="process.html#step-proposal">Tailored Proposal</a>
+            <a href="process.html#step-execution">Execution &amp; Delivery</a>
+            <a href="process.html#step-delivery">Ongoing Support</a>
+            <a href="process.html#faq">FAQs</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="management.html">Management</a>
+          <button class="dropdown-toggle" aria-label="Toggle Management submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="management.html#preko">Stephen Yaw Preko</a>
+            <a href="management.html#lamptey">David Lamptey</a>
+            <a href="management.html#sawyerr">Stephen Harry Sawyerr</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="why-us.html" class="active">Why Stelva</a>
+          <button class="dropdown-toggle" aria-label="Toggle Why Stelva submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="why-us.html#experts-trust">Experts You Can Trust</a>
+            <a href="why-us.html#end-to-end">End-to-End Support</a>
+            <a href="why-us.html#built-long-run">Built for the Long Run</a>
+            <a href="why-us.html#personalized-service">Personalized Service</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="testimonials.html">Reviews</a>
+          <button class="dropdown-toggle" aria-label="Toggle Reviews submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="testimonials.html#review-hope">Hope Doagbodzi</a>
+            <a href="testimonials.html#review-dugbatey">Dugbatey Teye Hoese</a>
+            <a href="testimonials.html#review-foster">Foster Kwashie Kplomdo</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="news.html">News</a>
+          <button class="dropdown-toggle" aria-label="Toggle News submenu" aria-expanded="false">&#9662;</button>
+          <div class="nav-dropdown">
+            <a href="news.html#news-featured">Latest Updates</a>
+            <a href="news.html#all-updates">All Updates</a>
+          </div>
+        </div>
+
         <a href="contact.html" class="nav-cta">Get in Touch</a>
       </div>
 
+      
       <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -76,22 +153,22 @@
   <section id="why-us">
     <div class="container">
       <div class="why-grid">
-        <div class="why-card fade-in">
+        <div class="why-card fade-in" id="experts-trust">
           <div class="why-card-num">01</div>
           <h3>Experts You Can Trust</h3>
           <p>Years of combined experience navigating Ghana's regulatory and business landscape.</p>
         </div>
-        <div class="why-card fade-in">
+        <div class="why-card fade-in" id="end-to-end">
           <div class="why-card-num">02</div>
           <h3>End-to-End Support</h3>
           <p>From the first registration document to ongoing audits, we cover every stage of your business lifecycle.</p>
         </div>
-        <div class="why-card fade-in">
+        <div class="why-card fade-in" id="built-long-run">
           <div class="why-card-num">03</div>
           <h3>Built for the Long Run</h3>
           <p>We design systems and structures meant to outlast trends, transitions, and time itself.</p>
         </div>
-        <div class="why-card fade-in">
+        <div class="why-card fade-in" id="personalized-service">
           <div class="why-card-num">04</div>
           <h3>Personalized Service</h3>
           <p>No two businesses are the same, and neither is our advice.</p>
